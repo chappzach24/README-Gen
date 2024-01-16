@@ -14,6 +14,7 @@ function renderLicenseSection(license) {}
 function generateMarkdown(data) {
   return `# ${data.title}
 
+    My fav food is: ${data.favFood}
 `;
 }
 
