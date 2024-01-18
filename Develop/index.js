@@ -4,11 +4,15 @@ const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown");
 // TODO: Create an array of questions for user input
 const questions = [
-  { name: "title", message: "What is your title?" },
-  {
-    name: "favFood",
-    message: "What is your favorite food?",
-  },
+  "Name of Project: ",
+  "Enter Description of project: ",
+  "Enter description of Installation: ",
+  "Enter description of Usage section: ",
+  "Enter description of License section: ",
+  "Enter names of Contributing: ",
+  "Enter information of Testing in this project: ",
+  "Enter your Github username: ",
+  "Enter your email: ",
 ];
 
 // TODO: Create a function to write README file
@@ -23,21 +27,62 @@ function writeToFile(fileName, data) {
 
 // TODO: Create a function to initialize app
 function init(question_array) {
-  inquirer
-    .prompt(question_array)
-    .then((answers) => {
-      // writeToFile("README_2.md", answers);
-      console.log(answers.favFood);
-      let data = answers;
-      writeToFile("README2.md", data);
-    })
-    .catch((error) => {
-      if (error.isTtyError) {
-        // Prompt couldn't be rendered in the current environment
-      } else {
-        // Something else went wrong
-      }
-    });
+  inquirer.prompt([
+    {
+      type: "input",
+      message: questions[0],
+      name: "name",
+    },
+
+    {
+      type: "input",
+      message: questions[1],
+      name: "descriptionProject",
+    },
+
+    {
+      type: "input",
+      message: questions[2],
+      name: "descriptionInstallation",
+    },
+
+    {
+      type: "input",
+      message: questions[3],
+      name: "descriptionInstallation",
+    },
+
+    {
+      type: "list",
+      choices: ["test", "test2", "test3"],
+      message: questions[4],
+      name: "license",
+    },
+
+    {
+      type: "input",
+      message: questions[5],
+      name: "contributors",
+    },
+
+    {
+      type: "input",
+      message: questions[6],
+      name: "test",
+    },
+
+    {
+      type: "input",
+      message: questions[7],
+      name: "username",
+    },
+
+    {
+      type: "input",
+      message: questions[8],
+      name: "email",
+    },
+  ]);
 }
 // Function call to initialize app
 init(questions);
