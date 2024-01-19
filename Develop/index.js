@@ -4,85 +4,79 @@ const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown");
 
 const questions = [
-  "Name of Project: ",
-  "Enter Description of project: ",
-  "Enter description of Installation: ",
-  "Enter description of Usage section: ",
-  "Enter description of License section: ",
-  "Enter names of Contributing: ",
-  "Enter information of Testing in this project: ",
-  "Enter your Github username: ",
-  "Enter your email: ",
+  {
+    type: "input",
+    message: "Name of Project: ",
+    name: "name",
+  },
+ 
+    {
+      type: "input",
+      message: "Please enter a description of your project: ",
+      name: "descriptionProject",
+    },
+
+    {
+      type: "input",
+      message: "How would you install this project: ",
+      name: "descriptionInstallation",
+    },
+
+    {
+      type: "input",
+      message: "How would someone use this poroject: ",
+      name: "usage",
+    },
+
+    {
+      type: "list",
+      choices: ["None", "MIT", "test3"],
+      message: "What type of license does this project need",
+      name: "license",
+    },
+
+    {
+      type: "input",
+      message: "Please list any contributors: ",
+      name: "contributors",
+    },
+
+    {
+      type: "input",
+      message: "How would someone test this app: ",
+      name: "test",
+    },
+
+    {
+      type: "input",
+      message: "Enter your GitHub user name: ",
+      name: "username",
+    },
+
+    {
+      type: "input",
+      message: "Enter your email: ",
+      name: "email",
+    },
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(data) {
-  let output = generateMarkdown(data);
-
-  fs.writeFile(fileName, output, (err) => {
+function writeToFile(fileName, data) {
+  
+  fs.writeFile(fileName, data, (err) => {
     if (err) throw err;
     console.log("The file has been saved!");
   });
 }
 
 // TODO: Create a function to initialize app
-function init(question_array) {
-  inquirer.prompt([
-    {
-      type: "input",
-      message: questions[0],
-      name: "name",
-    },
+function init() {
+  inquirer
+  .prompt(questions)
+  .then((response) => {
 
-    {
-      type: "input",
-      message: questions[1],
-      name: "descriptionProject",
-    },
-
-    {
-      type: "input",
-      message: questions[2],
-      name: "descriptionInstallation",
-    },
-
-    {
-      type: "input",
-      message: questions[3],
-      name: "descriptionInstallation",
-    },
-
-    {
-      type: "list",
-      choices: ["test", "test2", "test3"],
-      message: questions[4],
-      name: "license",
-    },
-
-    {
-      type: "input",
-      message: questions[5],
-      name: "contributors",
-    },
-
-    {
-      type: "input",
-      message: questions[6],
-      name: "test",
-    },
-
-    {
-      type: "input",
-      message: questions[7],
-      name: "username",
-    },
-
-    {
-      type: "input",
-      message: questions[8],
-      name: "email",
-    },
-  ]);
+      writeToFile("README.md", generateMarkdown(response));
+    });
 }
 // Function call to initialize app
-init(questions);
+init();
