@@ -4,7 +4,8 @@ function renderLicenseBadge(license) {
   if (license === "None") {
     return "";
   }
-  return  '';
+
+  return `![badge](https://img.shields.io/badge/license-${license}-brightgreen)`;
 }
 
 // TODO: Create a function that returns the license link
@@ -32,20 +33,21 @@ function generateMarkdown(data) {
   return `# ${data.name} ${renderLicenseBadge()}
 
   ## Description
+  ${data.descriptionProject}
   
   ## Table of Contents (Optional)
   
   - [Installation](#installation)
   - [Usage](#usage)
   - [Credits](#credits)
-${renderLicenseLink(data.license)}
+  ${renderLicenseLink(data.license)}
   
   ## Installation
-  
+  ${data.descriptionInstallation}
   
   
   ## Usage
-  
+  ${data.usage}
   
   
   ## Credits
@@ -54,9 +56,7 @@ ${renderLicenseLink(data.license)}
   ${renderLicenseSection(data.license)}
 
   
-
-  
-  ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
+ 
   
   Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
   
@@ -64,10 +64,21 @@ ${renderLicenseLink(data.license)}
   
   ## How to Contribute
   
-  [Contributor Covenant](https://www.contributor-covenant.org/) 
+  ${data.contributors}
   
   ## Tests
+
+  ${data.test}
   
+  ## Questions
+
+  If you have any questions about the projects please contact me at anyone of the ways below.
+
+  Github Username: ${data.github}
+
+  Github profile link: https://github.com/${data.github}
+
+  Email: ${data.email}
   `;
 }
 
