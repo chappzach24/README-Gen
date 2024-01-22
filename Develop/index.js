@@ -31,7 +31,7 @@ const questions = [
   {
     type: "list",
     choices: ["MIT", "Apache2.0", "BSD", "BSD2.0", "GNU", "ISC", "Unlicensed"],
-    message: "What type of license does this project need",
+    message: "What type of license does this project need: ",
     name: "license",
   },
 
@@ -64,7 +64,7 @@ const questions = [
 function writeToFile(fileName, data) {
   fs.writeFile(fileName, data, (err) => {
     if (err) throw err;
-    console.log(typeof data.license);
+    console.log(data.license);
     console.log("The file has been saved!");
   });
 }
