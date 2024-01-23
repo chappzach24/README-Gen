@@ -23,7 +23,7 @@ function renderLicenseSection(license) {
   if (license === "Unlicensed") {
     return "";
   }
-  return `  ## License
+  return ` ## License
   
  This project is is covered under the ${license} license.`;
 }
@@ -55,10 +55,7 @@ function generateMarkdown(data) {
   
   ${renderLicenseSection(data.license)}
 
-  
- 
-  
-  Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
+
   
 
   
