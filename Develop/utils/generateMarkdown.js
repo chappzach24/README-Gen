@@ -14,7 +14,7 @@ function renderLicenseLink(license) {
   if (license === "Unlicensed") {
     return "";
   }
-  return "- [License](#license)";
+  return "- [License](#license) ";
 }
 
 // TODO: Create a function that returns the license section of README
@@ -74,9 +74,9 @@ function generateMarkdown(data) {
 
   If you have any questions about the projects please contact me at anyone of the ways below.
 
-  Github Username: ${data.github}
+  Github Username: ${data.username}
 
-  Github profile link: https://github.com/${data.github}
+  Github profile link: https://github.com/${data.username}
 
   Email: ${data.email}
   `;
