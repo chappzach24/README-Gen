@@ -46,7 +46,7 @@ function generateMarkdown(data) {
   ${data.usage}
   
   
-  //license
+  
   ${renderLicenseSection(data.license)}
 
   
